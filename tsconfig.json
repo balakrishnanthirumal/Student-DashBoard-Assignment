@@ -5,6 +5,7 @@
     "strict": false,
     "skipLibCheck": true,
     "noEmit": false,
+    "outDir": "./dist", // Output directory for .js files
 
     "allowJs": true // Allow using plain JavaScript files
   },
