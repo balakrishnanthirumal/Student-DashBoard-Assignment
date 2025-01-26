@@ -10,7 +10,7 @@ import useGetStudents from './useGetStudents';
 const useAddStudents = () => {
   const dispatch = useDispatch();
   const { getStudentList } = useGetStudents();
-  export const interface student {
+  type student = {
     id: string;
     name: string;
     class: string;
@@ -23,7 +23,7 @@ const useAddStudents = () => {
     address: string;
     password: string;
     confirmPassword: string;
-  }
+  };
   const addStudent = async (inputs: student) => {
     const userRef = collection(firestore, 'student');
     const q = query(userRef, where('rollNumber', '==', inputs.rollNumber));
