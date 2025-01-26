@@ -10,7 +10,7 @@ import useGetStudents from './useGetStudents';
 const useAddStudents = () => {
   const dispatch = useDispatch();
   const { getStudentList } = useGetStudents();
-  interface student {
+  export const interface student {
     id: string;
     name: string;
     class: string;

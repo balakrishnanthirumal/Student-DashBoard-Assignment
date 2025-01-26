@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, MenuItem } from '@mui/material';
 import toast from 'react-hot-toast';
 import useAddStudents from 'src/hooks/useAddStudents';
+
 const AddStudentModal = () => {
   const [open, setOpen] = useState(false);
   const { addStudent } = useAddStudents();
