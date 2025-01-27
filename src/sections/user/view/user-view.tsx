@@ -26,13 +26,14 @@ import ViewModal from './ViewModal';
 const ExampleTable = () => {
   const students = useSelector((state: any) => state.student.students);
   const { isLoading } = useGetStudents();
-  const { studentProfile, getUserProfile } = useGetUserProfileById();
+  const { studentProfile: student, getUserProfile } = useGetUserProfileById();
   const { deleteStudent } = useDeleteStudent();
   const handleView = (userId: string) => {
     getUserProfile(userId);
     console.log(studentProfile);
   };
 
+  const studentProfile: any = student;
   const handleDelete = async (userId: any) => {
     await deleteStudent(userId);
     alert('DO YOU WANT TO DELETE');

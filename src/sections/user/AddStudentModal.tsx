@@ -6,7 +6,7 @@ import useAddStudents from 'src/hooks/useAddStudents';
 const AddStudentModal = () => {
   const [open, setOpen] = useState(false);
   const { addStudent } = useAddStudents();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     id: '',
     name: '',
     class: '',

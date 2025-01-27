@@ -5,7 +5,12 @@ import useEditProfile from 'src/hooks/useEditStudent';
 import { FaRegEdit } from 'react-icons/fa';
 import useGetStudents from 'src/hooks/useGetStudents';
 
-const EditModal = ({ userid, studentprofile }) => {
+interface EditModalProps {
+  userid: any;
+  studentprofile: any;
+}
+
+const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
   const [open, setOpen] = useState(false);
   const { isUpdating, editProfile } = useEditProfile();
   const { getStudentList } = useGetStudents();
