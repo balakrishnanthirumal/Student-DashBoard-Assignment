@@ -17,7 +17,7 @@ type student = {
 
 const useGetUserProfileById = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [studentProfile, setStudentProfile] = useState<student | null>();
+  const [studentProfile, setStudentProfile] = useState<any>();
 
   const getUserProfile = async (userId: any) => {
     setIsLoading(true);

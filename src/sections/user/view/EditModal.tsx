@@ -103,7 +103,7 @@ const EditModal = ({ userid, studentprofile }) => {
     return isValid;
   };
 
-  const handleChange = (e: React.FormEvent) => {
+  const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

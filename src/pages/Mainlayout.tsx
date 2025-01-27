@@ -8,7 +8,7 @@ import useLogOut from 'src/hooks/useLogOut';
 const MainLayout = () => {
   const navigate = useNavigate();
 
-  const auth = useSelector((state) => state.auth.user);
+  const auth = useSelector((state: any) => state.auth.user);
 
   if (!auth) navigate('/login');
   return (
@@ -73,11 +73,37 @@ const SideBar = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        height: '100vh',
+        width: '60px',
+        backgroundColor: '#2e3440',
+        color: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '10px 0',
+        boxShadow: '2px 0 5px rgba(0, 0, 0, 0.2)',
+      }}
+    >
       {/* Home Link */}
       <Link
         to="/"
-        style={styles.item}
+        style={{
+          width: '100%',
+          padding: '10px 0',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '10px',
+          cursor: 'pointer',
+          textDecoration: 'none',
+          color: '#fff',
+          fontSize: '12px',
+          transition: 'background-color 0.3s',
+          marginTop: '30px',
+        }}
         onMouseOver={(e) =>
           (e.currentTarget.style.backgroundColor = styles.itemHover.backgroundColor)
         }
@@ -89,7 +115,21 @@ const SideBar = () => {
 
       {/* Logout */}
       <div
-        style={styles.item}
+        style={{
+          width: '100%',
+          padding: '10px 0',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '10px',
+          cursor: 'pointer',
+          textDecoration: 'none',
+          color: '#fff',
+          fontSize: '12px',
+          transition: 'background-color 0.3s',
+          marginTop: '30px',
+        }}
         onClick={handleLogoutClick}
         onMouseOver={(e) =>
           (e.currentTarget.style.backgroundColor = styles.itemHover.backgroundColor)
