@@ -1,13 +1,25 @@
 import { useEffect, useState } from 'react';
-import useShowToast from './useShowToast';
 import { doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 
+type student = {
+  uid: string;
+  name: string;
+  class: string;
+  section: string;
+  rollNumber: number;
+  email: string;
+  dob: string;
+  gender: string;
+  phone: number;
+  address: string;
+};
+
 const useGetUserProfileById = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [studentProfile, setStudentProfile] = useState(null);
+  const [studentProfile, setStudentProfile] = useState<student | null>();
 
-  const getUserProfile = async (userId) => {
+  const getUserProfile = async (userId: any) => {
     setIsLoading(true);
     setStudentProfile(null);
     try {

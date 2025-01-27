@@ -5,14 +5,15 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import useGetUserProfileById from './useGetStudenyById';
 import toast from 'react-hot-toast';
+import { AnyAaaaRecord } from 'node:dns';
 
 const useEditProfile = () => {
   const [isUpdating, setIsUpdating] = useState(false);
-  const authUser = useSelector((state) => state.auth.user);
+  const authUser = useSelector((state: any) => state.auth.user);
   const dispatch = useDispatch();
   const { isLoading, studentProfile, getUserProfile } = useGetUserProfileById();
 
-  const editProfile = async (inputs) => {
+  const editProfile = async (inputs: any) => {
     console.log(inputs);
     getUserProfile(inputs.uid);
     setIsUpdating(true);

@@ -19,13 +19,12 @@ import AddStudentModal from '../AddStudentModal';
 
 import { MdOutlineDelete } from 'react-icons/md';
 import useGetUserProfileById from 'src/hooks/useGetStudenyById';
-import ViewModal from './viewModal';
 import EditModal from './EditModal';
 import useDeleteStudent from 'src/hooks/useDeleteStudent';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import ViewModal from './ViewModal';
 const ExampleTable = () => {
-  const students = useSelector((state) => state.student.students);
+  const students = useSelector((state: any) => state.student.students);
   const { isLoading } = useGetStudents();
   const { studentProfile, getUserProfile } = useGetUserProfileById();
   const { deleteStudent } = useDeleteStudent();
@@ -34,7 +33,7 @@ const ExampleTable = () => {
     console.log(studentProfile);
   };
 
-  const handleDelete = async (userId) => {
+  const handleDelete = async (userId: any) => {
     await deleteStudent(userId);
     alert('DO YOU WANT TO DELETE');
     toast.success('Deleted Successfully');
@@ -64,7 +63,7 @@ const ExampleTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {students?.map((student, index) => (
+              {students?.map((student: any, index: any) => (
                 <TableRow key={index}>
                   <TableCell>{student.id}</TableCell>
                   <TableCell>{student.name}</TableCell>

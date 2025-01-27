@@ -7,10 +7,10 @@ import toast from 'react-hot-toast';
 
 const useGetStudents = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const students = useSelector((state) => state.student.students);
-  const authUser = useSelector((state) => state.auth.user);
+  const students = useSelector((state: any) => state.student.students);
+  const authUser = useSelector((state: any) => state.auth.user);
   const dispatch = useDispatch();
-  let studentLists;
+  let studentLists: any[];
   const getStudentList = async () => {
     setIsLoading(true);
 
