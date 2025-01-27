@@ -10,12 +10,25 @@ interface EditModalProps {
   studentprofile: any;
 }
 
+interface student {
+  id: any;
+  name: any;
+  class: any;
+  section: any;
+  rollNumber: any;
+  email: any;
+  dob: any;
+  gender: any;
+  phone: any;
+  address: any;
+}
+
 const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
   const [open, setOpen] = useState(false);
   const { isUpdating, editProfile } = useEditProfile();
   const { getStudentList } = useGetStudents();
   console.log(studentprofile);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<student>({
     id: '',
     name: '',
     class: '',
@@ -26,8 +39,6 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
     gender: '',
     phone: '',
     address: '',
-    password: '',
-    confirmPassword: '',
   });
 
   const handleOpen = () => {

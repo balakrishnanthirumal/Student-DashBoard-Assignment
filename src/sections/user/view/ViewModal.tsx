@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import { useState } from 'react';
 import { FaRegEye } from 'react-icons/fa';
 import { Label } from 'src/components/label';
-const ViewModal = ({ studentprofile }) => {
+const ViewModal: React.FC<any> = ({ studentprofile }) => {
   const [open, setOpen] = useState(false);
   console.log(studentprofile);
   const handleOpen = () => setOpen(true);
