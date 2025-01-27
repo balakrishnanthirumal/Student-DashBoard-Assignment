@@ -7,12 +7,14 @@ import {
   getDocs,
   where,
 } from 'firebase/firestore';
-import { auth, firestore } from '../firebase/firebase';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useDispatch } from 'react-redux';
+
 import { login } from '../store/authSlice';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { auth, firestore } from '../firebase/firebase';
 
 const useSignUpWithEmail = () => {
   const dispatch = useDispatch();
@@ -54,9 +56,7 @@ const useSignUpWithEmail = () => {
       }
 
       if (newUser) {
-        let userDoc;
-
-        userDoc = {
+        const userDoc = {
           uid: newUser.user.uid,
           email: inputs.email,
         };

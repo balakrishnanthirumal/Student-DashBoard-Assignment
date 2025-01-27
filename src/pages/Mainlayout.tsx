@@ -4,6 +4,7 @@ import { MdLogout } from 'react-icons/md';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useLogOut from 'src/hooks/useLogOut';
+import { Button } from '@mui/material';
 
 const MainLayout = () => {
   const navigate = useNavigate();
@@ -104,17 +105,13 @@ const SideBar = () => {
           transition: 'background-color 0.3s',
           marginTop: '30px',
         }}
-        onMouseOver={(e) =>
-          (e.currentTarget.style.backgroundColor = styles.itemHover.backgroundColor)
-        }
-        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
       >
         <FaHome style={styles.icon} />
         <span>Home</span>
       </Link>
 
       {/* Logout */}
-      <div
+      <Button
         style={{
           width: '100%',
           padding: '10px 0',
@@ -130,15 +127,11 @@ const SideBar = () => {
           transition: 'background-color 0.3s',
           marginTop: '30px',
         }}
-        onClick={handleLogoutClick}
-        onMouseOver={(e) =>
-          (e.currentTarget.style.backgroundColor = styles.itemHover.backgroundColor)
-        }
-        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+        onClick={() => handleLogoutClick()}
       >
         <MdLogout style={styles.icon} />
         <span>Logout</span>
-      </div>
+      </Button>
     </div>
   );
 };

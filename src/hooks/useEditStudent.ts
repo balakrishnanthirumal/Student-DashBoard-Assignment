@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux';
-import { firestore } from '../firebase/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import useGetUserProfileById from './useGetStudenyById';
 import toast from 'react-hot-toast';
-import { AnyAaaaRecord } from 'node:dns';
+
+import useGetUserProfileById from './useGetStudenyById';
+import { firestore } from '../firebase/firebase';
 
 const useEditProfile = () => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -37,7 +36,6 @@ const useEditProfile = () => {
       localStorage.setItem('user-info', JSON.stringify(updatedUser));
     } catch (error) {
       console.log(error);
-      return;
     }
   };
   return { editProfile, isUpdating };

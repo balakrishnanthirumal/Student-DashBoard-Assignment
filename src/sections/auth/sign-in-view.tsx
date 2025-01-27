@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+
 import Box from '@mui/material/Box';
 
 import TextField from '@mui/material/TextField';
@@ -6,12 +7,9 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useRouter } from 'src/routes/hooks';
 import { Iconify } from 'src/components/iconify';
-import { useSelector } from 'react-redux';
 import useLogin from 'src/hooks/useLogin';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function SignInView() {
   const navigate = useNavigate();
@@ -89,7 +87,7 @@ export function SignInView() {
           <Typography variant="h5">Sign in</Typography>
 
           <Typography variant="h6">
-            <Link to={'/signup'}>New User?</Link>
+            <Link to="/signup">New User?</Link>
           </Typography>
         </Box>
 

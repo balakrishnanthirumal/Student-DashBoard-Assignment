@@ -1,10 +1,10 @@
 import { doc, setDoc, collection, query, getDocs, where } from 'firebase/firestore';
-import { firestore } from '../firebase/firebase';
+import toast from 'react-hot-toast';
 
 import { useDispatch } from 'react-redux';
 import { createStudent } from 'src/store/studentSlice';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { firestore } from '../firebase/firebase';
+
 import useGetStudents from './useGetStudents';
 
 const useAddStudents = () => {
@@ -37,9 +37,7 @@ const useAddStudents = () => {
       const newUser = inputs;
 
       if (newUser) {
-        let userDoc;
-
-        userDoc = {
+        const userDoc = {
           uid: newUser.id,
           email: inputs.email,
           name: inputs.name,

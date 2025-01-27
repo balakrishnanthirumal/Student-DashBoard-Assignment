@@ -8,9 +8,8 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { useRouter } from 'src/routes/hooks';
 import { Iconify } from 'src/components/iconify';
-
-import useSignUpWithEmail from '../../hooks/useSignUpWIthEmail';
 import { Link } from 'react-router-dom';
+import useSignUpWithEmail from '../../hooks/useSignUpWIthEmail';
 
 export function SignUpView() {
   const router = useRouter();
@@ -86,7 +85,7 @@ export function SignUpView() {
         <Typography variant="h6">Sign Up</Typography>
 
         <Typography variant="h6">
-          <Link to={'/login'}>Already Registered?</Link>
+          <Link to="/login">Already Registered?</Link>
         </Typography>
       </Box>
 

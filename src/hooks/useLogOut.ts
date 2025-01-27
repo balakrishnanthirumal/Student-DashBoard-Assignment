@@ -1,9 +1,10 @@
 import { useSignOut } from 'react-firebase-hooks/auth';
+import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
+
 import { auth } from '../firebase/firebase';
 
 import { logout } from '../store/authSlice';
-import { useDispatch } from 'react-redux';
-import toast from 'react-hot-toast';
 
 const useLogOut = () => {
   const [signOut, loading, error] = useSignOut(auth);
@@ -14,7 +15,7 @@ const useLogOut = () => {
       localStorage.removeItem('user-info');
       dispatch(logout());
       toast.success('Logged Out');
-    } catch (error) {
+    } catch (err) {
       toast.error('Try again');
     }
   };

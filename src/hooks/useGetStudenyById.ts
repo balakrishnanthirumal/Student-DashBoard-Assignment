@@ -29,6 +29,7 @@ const useGetUserProfileById = () => {
         console.log(userRef.data());
       }
     } catch (error) {
+      console.log(error);
     } finally {
       setIsLoading(false);
     }

@@ -1,5 +1,8 @@
-import { TextField } from '@mui/material';
-import { Box, Modal, Typography } from '@mui/material';
+import TextField from '@mui/material/TextField';
+
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import { FaRegEye } from 'react-icons/fa';
@@ -19,7 +22,7 @@ const ViewModal: React.FC<any> = ({ studentprofile }) => {
         onClick={handleOpen}
         style={{ display: 'flex', marginBottom: 50 }}
       >
-        <FaRegEye cursor={'pointer'} />
+        <FaRegEye cursor="pointer" />
       </Button>
 
       <Modal
@@ -48,7 +51,7 @@ const ViewModal: React.FC<any> = ({ studentprofile }) => {
           </Typography>
           <form>
             <Label>ID</Label>
-            <TextField disabled={true} value={studentprofile?.uid} fullWidth margin="normal" />
+            <TextField disabled={true} value={studentprofile?.id} fullWidth margin="normal" />
             <Label>Name</Label>
             <TextField disabled={true} value={studentprofile?.name} fullWidth margin="normal" />
             <Label>Class</Label>

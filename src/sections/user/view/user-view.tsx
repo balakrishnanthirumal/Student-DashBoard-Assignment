@@ -15,25 +15,29 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import useGetStudents from 'src/hooks/useGetStudents';
-import AddStudentModal from '../AddStudentModal';
 
 import { MdOutlineDelete } from 'react-icons/md';
 import useGetUserProfileById from 'src/hooks/useGetStudenyById';
-import EditModal from './EditModal';
 import useDeleteStudent from 'src/hooks/useDeleteStudent';
 import toast from 'react-hot-toast';
+import EditModal from './EditModal';
+
+import AddStudentModal from '../AddStudentModal';
+
 import ViewModal from './ViewModal';
+
 const ExampleTable = () => {
   const students = useSelector((state: any) => state.student.students);
+  console.log(students);
   const { isLoading } = useGetStudents();
-  const { studentProfile: student, getUserProfile } = useGetUserProfileById();
+  const { studentProfile: studentDetail, getUserProfile } = useGetUserProfileById();
   const { deleteStudent } = useDeleteStudent();
   const handleView = (userId: string) => {
     getUserProfile(userId);
     console.log(studentProfile);
   };
 
-  const studentProfile: any = student;
+  const studentProfile: any = studentDetail;
   const handleDelete = async (userId: any) => {
     await deleteStudent(userId);
     alert('DO YOU WANT TO DELETE');
@@ -83,9 +87,9 @@ const ExampleTable = () => {
                     <div>
                       <EditModal userid={student.uid} studentprofile={student} />
                     </div>
-                    <div onClick={() => handleView(student.id)}>
+                    <Button onClick={(e) => handleView(student.id)}>
                       <ViewModal studentprofile={studentProfile} />
-                    </div>
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}

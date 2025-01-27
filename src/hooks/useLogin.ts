@@ -1,10 +1,11 @@
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
-import { auth, firestore } from '../firebase/firebase';
+import { useNavigate } from 'react-router-dom';
+
 import { doc, getDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
+import { auth, firestore } from '../firebase/firebase';
 import { login } from '../store/authSlice';
-import { useNavigate } from 'react-router-dom';
 
 const useLogin = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const useLogin = () => {
         toast.success('Logged in');
         navigate('/');
       }
-    } catch (error) {
+    } catch (err) {
       toast.error('Try again');
     }
   };

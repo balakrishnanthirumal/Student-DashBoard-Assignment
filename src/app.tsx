@@ -1,13 +1,12 @@
 import { ThemeProvider } from 'src/theme/theme-provider';
 import { Route, Routes } from 'react-router-dom';
-
-import { SignInView } from './sections/auth';
-import { SignUpView } from './sections/auth';
 import { Toaster } from 'react-hot-toast';
-import { UserPage } from './routes/sections';
-import store from './store/store';
 import { Provider } from 'react-redux';
 import UserView from 'src/sections/user/view/user-view';
+import { SignInView } from './sections/auth/sign-in-view';
+import { SignUpView } from './sections/auth/sign-up-view';
+import store from './store/store';
+
 import MainLayout from './pages/Mainlayout';
 
 export default function App() {
