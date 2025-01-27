@@ -14,26 +14,26 @@ const useEditProfile = () => {
 
   const editProfile = async (inputs: any) => {
     console.log(inputs);
-    getUserProfile(inputs.uid);
+
     setIsUpdating(true);
-    const userDocRef = doc(firestore, 'student', inputs.id);
+    const userDocRef = doc(firestore, 'student', inputs?.uid);
     try {
       let updatedUser = {};
       updatedUser = {
-        address: inputs.address || studentProfile?.address,
-        class: inputs.class || studentProfile?.class,
-        dob: inputs.class || studentProfile?.class,
-        email: inputs.email || studentProfile?.email,
-        name: inputs.name || studentProfile?.name,
-        phone: inputs.phone || studentProfile?.phone,
-        rollNumber: inputs.rollNumber || studentProfile?.rollNumber,
-        section: inputs.section || studentProfile?.section,
+        address: inputs?.address || studentProfile?.address,
+        class: inputs?.class || studentProfile?.class,
+        dob: inputs?.class || studentProfile?.class,
+        email: inputs?.email || studentProfile?.email,
+        name: inputs?.name || studentProfile?.name,
+        phone: inputs?.phone || studentProfile?.phone,
+        rollNumber: inputs?.rollNumber || studentProfile?.rollNumber,
+        section: inputs?.section || studentProfile?.section,
       };
 
       toast.success('Updated Successfully');
 
       await updateDoc(userDocRef, updatedUser);
-      localStorage.setItem('user-info', JSON.stringify(updatedUser));
+      getUserProfile(inputs.uid);
     } catch (error) {
       console.log(error);
     }

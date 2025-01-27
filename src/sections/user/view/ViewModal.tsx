@@ -1,19 +1,39 @@
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { useState } from 'react';
 import { FaRegEye } from 'react-icons/fa';
 import { Label } from 'src/components/label';
-const ViewModal: React.FC<any> = ({ studentprofile }) => {
+
+// Define the type for studentprofile
+interface StudentProfile {
+  uid: string;
+  name: string;
+  class: string;
+  section: string;
+  rollNumber: string;
+  email: string;
+  dob: string;
+  gender: string;
+  phone: string;
+  address: string;
+}
+
+// Define the props for the component
+interface ViewModalProps {
+  studentprofile: StudentProfile;
+}
+
+const ViewModal: React.FC<ViewModalProps> = ({ studentprofile }) => {
   const [open, setOpen] = useState(false);
-  console.log(studentprofile);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <div>
       <Button
@@ -51,25 +71,20 @@ const ViewModal: React.FC<any> = ({ studentprofile }) => {
           </Typography>
           <form>
             <Label>ID</Label>
-            <TextField disabled={true} value={studentprofile?.id} fullWidth margin="normal" />
+            <TextField disabled value={studentprofile?.uid} fullWidth margin="normal" />
             <Label>Name</Label>
-            <TextField disabled={true} value={studentprofile?.name} fullWidth margin="normal" />
+            <TextField disabled value={studentprofile?.name} fullWidth margin="normal" />
             <Label>Class</Label>
-            <TextField disabled={true} value={studentprofile?.class} fullWidth margin="normal" />
+            <TextField disabled value={studentprofile?.class} fullWidth margin="normal" />
             <Label>Section</Label>
-            <TextField disabled={true} value={studentprofile?.section} fullWidth margin="normal" />
+            <TextField disabled value={studentprofile?.section} fullWidth margin="normal" />
             <Label>Roll Number</Label>
-            <TextField
-              disabled={true}
-              value={studentprofile?.rollNumber}
-              fullWidth
-              margin="normal"
-            />
+            <TextField disabled value={studentprofile?.rollNumber} fullWidth margin="normal" />
             <Label>Email</Label>
-            <TextField disabled={true} value={studentprofile?.email} fullWidth margin="normal" />
+            <TextField disabled value={studentprofile?.email} fullWidth margin="normal" />
             <Label>Date of Birth</Label>
             <TextField
-              disabled={true}
+              disabled
               type="date"
               value={studentprofile?.dob}
               fullWidth
@@ -77,17 +92,12 @@ const ViewModal: React.FC<any> = ({ studentprofile }) => {
               InputLabelProps={{ shrink: true }}
             />
             <Label>Gender</Label>
-            <TextField
-              disabled={true}
-              value={studentprofile?.gender}
-              fullWidth
-              margin="normal"
-            ></TextField>
-            <Label> Phone Number</Label>
-            <TextField disabled={true} value={studentprofile?.phone} fullWidth margin="normal" />
+            <TextField disabled value={studentprofile?.gender} fullWidth margin="normal" />
+            <Label>Phone Number</Label>
+            <TextField disabled value={studentprofile?.phone} fullWidth margin="normal" />
             <Label>Address</Label>
             <TextField
-              disabled={true}
+              disabled
               value={studentprofile?.address}
               multiline
               rows={3}

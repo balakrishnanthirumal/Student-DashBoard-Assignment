@@ -75,7 +75,7 @@ const ExampleTable = () => {
                   <TableCell>{student.class}</TableCell>
                   <TableCell>{student.email}</TableCell>
                   <TableCell>{student.rollNumber}</TableCell>
-                  <TableCell align="right" sx={{ gap: 5, display: 'flex' }}>
+                  <TableCell align="right" sx={{ gap: 5, display: 'flex', alignItems: 'center' }}>
                     <Button
                       variant="contained"
                       color="primary"

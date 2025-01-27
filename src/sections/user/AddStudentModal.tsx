@@ -113,7 +113,7 @@ const AddStudentModal = () => {
         variant="contained"
         color="primary"
         onClick={handleOpen}
-        style={{ display: 'flex', marginLeft: 1400, marginBottom: 50 }}
+        style={{ display: 'flex', marginLeft: 1300, marginBottom: 50 }}
       >
         Add Student
       </Button>

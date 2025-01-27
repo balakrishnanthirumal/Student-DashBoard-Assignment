@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createStudent } from 'src/store/studentSlice';
 import { collection, getDocs, query } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
-import toast from 'react-hot-toast';
 
 import { firestore } from '../firebase/firebase';
 
@@ -11,12 +10,12 @@ const useGetStudents = () => {
   const students = useSelector((state: any) => state.student.students);
   const authUser = useSelector((state: any) => state.auth.user);
   const dispatch = useDispatch();
-  let studentLists: any[];
-  const getStudentList = async () => {
+
+  const getStudentList = useCallback(async () => {
     setIsLoading(true);
 
     try {
-      studentLists = [];
+      const studentLists: any[] = []; // Declare locally inside the callback
       const q = query(collection(firestore, 'student'));
       const querySnapshot = await getDocs(q);
 
@@ -30,13 +29,13 @@ const useGetStudents = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     if (authUser) {
       getStudentList();
     }
-  }, [authUser]);
+  }, [authUser, getStudentList]);
 
   return { isLoading, students, getStudentList };
 };

@@ -11,7 +11,6 @@ interface EditModalProps {
 }
 
 interface student {
-  id: any;
   name: any;
   class: any;
   section: any;
@@ -28,8 +27,7 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
   const { isUpdating, editProfile } = useEditProfile();
   const { getStudentList } = useGetStudents();
   console.log(studentprofile);
-  const [formData, setFormData] = useState<student>({
-    id: '',
+  const [formData, setFormData] = useState({
     name: '',
     class: '',
     section: '',
@@ -44,7 +42,6 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
   const handleOpen = () => {
     setOpen(true);
     setFormData({
-      id: studentprofile?.id || '',
       name: studentprofile?.name || '',
       class: studentprofile?.class || '',
       section: studentprofile?.section || '',
@@ -59,7 +56,6 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
   const handleClose = () => {
     setOpen(false);
     setFormData({
-      id: '',
       name: '',
       class: '',
       section: '',
@@ -75,43 +71,39 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
   const validate = () => {
     let isValid = true;
 
-    if (!formData.id) {
-      toast.error('ID is required');
-      isValid = false;
-    }
-    if (!formData.name || !/^[A-Za-z\s]+$/.test(formData.name)) {
+    if (!formData?.name || !/^[A-Za-z\s]+$/.test(formData?.name)) {
       toast.error('Name must be a valid string containing only alphabets');
       isValid = false;
     }
-    if (!formData.class) {
+    if (!formData?.class) {
       toast.error('Class is required');
       isValid = false;
     }
-    if (!formData.section || !/^[A-Za-z]+$/.test(formData.section)) {
+    if (!formData?.section || !/^[A-Za-z]+$/.test(formData?.section)) {
       toast.error('Section must be a valid string containing only alphabets');
       isValid = false;
     }
-    if (!formData.rollNumber || !/^\d+$/.test(formData.rollNumber)) {
+    if (!formData?.rollNumber || !/^\d+$/.test(formData?.rollNumber)) {
       toast.error('Roll Number must contain only numbers');
       isValid = false;
     }
-    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if (!formData?.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData?.email)) {
       toast.error('Enter a valid Email');
       isValid = false;
     }
-    if (!formData.dob) {
+    if (!formData?.dob) {
       toast.error('Date of Birth is required');
       isValid = false;
     }
-    if (!formData.gender) {
+    if (!formData?.gender) {
       toast.error('Gender is required');
       isValid = false;
     }
-    if (!formData.phone || !/^\d{10}$/.test(formData.phone)) {
+    if (!formData?.phone || !/^\d{10}$/.test(formData?.phone)) {
       toast.error('Phone number must contain exactly 10 digits');
       isValid = false;
     }
-    if (!formData.address || typeof formData.address !== 'string') {
+    if (!formData?.address || typeof formData?.address !== 'string') {
       toast.error('Address must be a valid string');
       isValid = false;
     }
@@ -119,7 +111,7 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
     return isValid;
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -127,7 +119,7 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
     e.preventDefault();
     if (validate()) {
       console.log('Form Submitted:', formData);
-      await editProfile({ ...formData });
+      await editProfile({ ...formData, uid: userid });
       await getStudentList();
       toast.success('Student updated successfully');
       handleClose();
@@ -170,14 +162,6 @@ const EditModal: React.FC<EditModalProps> = ({ userid, studentprofile }) => {
             Edit Detail
           </Typography>
           <form onSubmit={handleEdit}>
-            <TextField
-              label="ID"
-              name="id"
-              value={formData?.id}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-            />
             <TextField
               label="Name"
               name="name"
