@@ -1,13 +1,25 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "strict": false,
+    "baseUrl": ".",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true,
+    "module": "ESNext",
+    "jsx": "react-jsx",
     "skipLibCheck": true,
-    "noEmit": false,
-    "outDir": "./dist", // Output directory for .js files
-
-    "allowJs": true // Allow using plain JavaScript files
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "Node",
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
   "exclude": ["node_modules"],
